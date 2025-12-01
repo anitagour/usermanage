@@ -1,4 +1,5 @@
 import AllUser from "./componets/AllUser"
+import Register from "./componets/Register"
 
 
 function App() {
@@ -6,7 +7,8 @@ function App() {
 
   return (
     <>
-     <AllUser/>
+     {/* <AllUser/> */}
+     <Register/>
     </>
   )
 }
