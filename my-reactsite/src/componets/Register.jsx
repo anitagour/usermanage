@@ -13,7 +13,7 @@ export default function Register() {
 
 
  const handleChange=(e)=>{
-    setformData({...formData, [e.target.value]:e.target.value})
+    setformData({...formData, [e.target.name]:e.target.value})
  }
 
  const validates=()=>{
@@ -22,7 +22,7 @@ export default function Register() {
     if(!formData.uemail)newErrors.uemail='Email is required';
     if(!formData.upass)newErrors.upass='Password is required';
     if(!formData.ucpass)newErrors.ucpass='Confrim password is required';
-    if(!formData.upass!==formData.ucpass)newErrors.ucpass='Password and Confrim   password   does not match';
+    if(formData.upass!==formData.ucpass) newErrors.ucpass='Password and Confrim   password   does not match';
  return newErrors;
  }
  
@@ -31,7 +31,7 @@ export default function Register() {
     const validateErrors=validates();
     setErrors(validateErrors);
     if(Object.keys(validateErrors).length===0){
-        setSuccessMsg("registration donE Successfully");
+        setSuccessMsg("registration done Successfully");
     }
     else{
         setSuccessMsg("registration failed");
@@ -53,11 +53,11 @@ export default function Register() {
         {errors.uemail && <p><mark>{errors.uemail}</mark></p> }
         <br /><br />
         <label > Enter Password</label>
-        <input type="text" name="upass " onChange={handleChange} />
+        <input type="password" name="upass" onChange={handleChange} />
         {errors.upass && <p><mark>{errors.upass}</mark></p> }
         <br /><br />
         <label > Enter Confirm Password</label>
-        <input type="text" name="ucpass" onChange={handleChange} />
+        <input type="password" name="ucpass" onChange={handleChange} />
         {errors.ucpass && <p><mark>{errors.ucpass}</mark></p> }
         <br /><br />
        <input type="submit" value={"Submit"} />
