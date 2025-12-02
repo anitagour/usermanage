@@ -8,7 +8,7 @@ export default function Register() {
     uname:"",uemail:"",upass:" ",ucpass:""
  })
 
- const[erros, setErrors]=useState({});
+ const[errors, setErrors]=useState({});
  const [ successMsg, setSuccessMsg]=useState("");
 
 
@@ -41,18 +41,24 @@ export default function Register() {
   return (
     <>
      <h1>Register Form</h1>
-     <form > 
+         {successMsg && <h2><mark>{successMsg}</mark></h2> }
+
+     <form onSubmit={handleSubmit}  > 
         <label > Enter Name</label>
-        <input type="text" name="uname" />
+        <input type="text" name="uname"  onChange={handleChange} />
+        {errors.uname && <p><mark>{errors.uname}</mark></p> }
         <br /><br />
         <label > Enter Email</label>
-        <input type="text" name="uemail" />
+        <input type="text" name="uemail"  onChange={handleChange} />
+        {errors.uemail && <p><mark>{errors.uemail}</mark></p> }
         <br /><br />
         <label > Enter Password</label>
-        <input type="text" name="upass" />
+        <input type="text" name="upass " onChange={handleChange} />
+        {errors.upass && <p><mark>{errors.upass}</mark></p> }
         <br /><br />
         <label > Enter Confirm Password</label>
-        <input type="text" name="ucpass" />
+        <input type="text" name="ucpass" onChange={handleChange} />
+        {errors.ucpass && <p><mark>{errors.ucpass}</mark></p> }
         <br /><br />
        <input type="submit" value={"Submit"} />
        <input type="reset" value={"Cancel"} />
